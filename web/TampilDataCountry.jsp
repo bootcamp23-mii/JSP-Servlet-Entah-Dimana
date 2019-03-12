@@ -14,47 +14,49 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tampil Data Country</title>
     </head>
-    <body>
-        <h1>Tampil Data</h1><form action="CountryServlet" method="POST">
-            <table border="1">
+    <body bgcolor='#FFFAF0'>
+        <table align='center' size='+4'> 
+            <thead>
+                <tr>
+                    <th colspan="2" >TAMPIL DATA COUNTRY</th>
+                </tr>
+            </thead> </table>
+        <form action="CountryServlet" method="POST">
+            <table cellspacing='50' align ='center' border="2">
                 <thead>
                     <tr>
-                        <th colspan="2">Insert Country</th>
+                        <th colspan="4">Insert Country</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Id</td>
-                        <td><input type="text" name="countryId" value="<% if (session.getAttribute("countryId") != null) {
-                                out.print(session.getAttribute("countryId"));
-                            }   %>" /></td>
+                        <td><input type="text" name="countryId" value="<%= (session.getAttribute("countryId") != null)?session.getAttribute("countryId"):"" %>"/></td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><input type="text" name="countryName" value="<% if (session.getAttribute("countryName") != null) {
-                                out.print(session.getAttribute("countryName"));
-                            }   %>" /></td>
+                        <td><input type="text" name="countryName" value="<%= (session.getAttribute("countryName") != null)?session.getAttribute("countryName"):"" %>"/></td>
                     </tr>
                     <tr>
                         <td>Region</td>
-                        <td><select name="countryRegion">
+                        <td><select name="countryRegion" >
                                 <% for (Region elem : (List<Region>) session.getAttribute("regiondata")) {
-                                        if (elem.getId().equals(session.getAttribute("countryRegion"))) {
-                                %>
-                                <option value="<%= elem.getId()%>" selected><%= elem.getName()%></option><%} else {%>
-                                <option value="<%= elem.getId()%>"><%= elem.getName()%></option>
-                                <%}%>
-                                <%}%>
+                                        out.print("<option "
+                                                + "value=\"" + elem.getId() + "\" "
+                                                + (elem.getId().equals(session.getAttribute("countryRegion")) ? "selected" : "") + ">"
+                                                + elem.getName() + "</option>");
+                                    }%>
+
                             </select></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="Save" name="save" /></td>
+                        <td colspan="2" align='center' ><input type="submit" value="Save" name="save" /></td>
                     </tr>
                 </tbody>
             </table>
         </form>
 
-        <table>
+        <table cellspacing='30' align='center' border='1'>
             <tr>
                 <th>No.</th>
                 <th>Id</th>
@@ -63,7 +65,8 @@
                 <th>Aksi</th>
             </tr>
             <% int j = 1;
-                for (Country elem : (List<Country>) session.getAttribute("data")) {%>
+                for (Country elem : (List<Country>) session.getAttribute(
+                        "data")) {%>
             <tr>
                 <td><%= j++%></td>
                 <td><%= elem.getId()%></td>
@@ -82,5 +85,5 @@
     <% session.removeAttribute(
                 "countryName");%>
     <% session.removeAttribute(
-                            "countryRegion");%>
+                "countryRegion");%>
 </html>

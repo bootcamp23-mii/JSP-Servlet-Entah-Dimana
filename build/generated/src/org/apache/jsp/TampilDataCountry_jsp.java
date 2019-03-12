@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import models.Region;
 import java.util.List;
 import models.Country;
 
@@ -43,127 +44,137 @@ public final class TampilDataCountry_jsp extends org.apache.jasper.runtime.HttpJ
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Tampil Data Country</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <h1>Tampil Data</h1><form action=\"CountryServlet\" method=\"POST\">\n");
-      out.write("            <table border=\"1\">\n");
-      out.write("                <thead>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <th colspan=\"2\">Insert Country</th>\n");
-      out.write("                    </tr>\n");
-      out.write("                </thead>\n");
-      out.write("                <tbody>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td>Id</td>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>Tampil Data Country</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body bgcolor='#FFFAF0'>\r\n");
+      out.write("        <table align='center' size='+4'> \r\n");
+      out.write("             <thead>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <th colspan=\"2\" >TAMPIL DATA COUNTRY</th>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                </thead> </table>\r\n");
+      out.write("        <form action=\"CountryServlet\" method=\"POST\">\r\n");
+      out.write("            <table cellspacing='50' align ='center' border=\"2\">\r\n");
+      out.write("                <thead>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <th colspan=\"4\">Insert Country</th>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                </thead>\r\n");
+      out.write("                <tbody>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <td>Id</td>\r\n");
       out.write("                        <td><input type=\"text\" name=\"countryId\" value=\"");
  if (session.getAttribute("countryId") != null) {
                                 out.print(session.getAttribute("countryId"));
                             }   
-      out.write("\" /></td>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td>Name</td>\n");
+      out.write("\" /></td>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <td>Name</td>\r\n");
       out.write("                        <td><input type=\"text\" name=\"countryName\" value=\"");
  if (session.getAttribute("countryName") != null) {
                                 out.print(session.getAttribute("countryName"));
                             }   
-      out.write("\" /></td>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td>Region</td>\n");
-      out.write("                        <td><select name=\"countryRegion\">\n");
+      out.write("\" /></td>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <td>Region</td>\r\n");
+      out.write("                        <td><select name=\"countryRegion\" >\r\n");
       out.write("                                ");
- for (Country elem : (List<Country>) session.getAttribute("data")) {
+ for (Region elem : (List<Region>) session.getAttribute("regiondata")) {
                                         if (elem.getId().equals(session.getAttribute("countryRegion"))) {
                                 
-      out.write("\n");
+      out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print( session.getAttribute("countryRegion"));
+      out.print( elem.getId());
       out.write("\" selected>");
-      out.print( session.getAttribute("countryRegion"));
-      out.write("</option>\n");
-      out.write("                                ");
- } else {
-      out.write("\n");
+      out.print( elem.getName());
+      out.write("</option>");
+} else {
+      out.write("\r\n");
       out.write("                                <option value=\"");
-      out.print( session.getAttribute("countryRegion"));
+      out.print( elem.getId());
       out.write('"');
       out.write('>');
-      out.print( session.getAttribute("countryRegion"));
-      out.write("</option>\n");
+      out.print( elem.getName());
+      out.write("</option>\r\n");
       out.write("                                ");
 }
-      out.write("\n");
+      out.write("\r\n");
       out.write("                                ");
 }
-      out.write("\n");
-      out.write("                            </select></td>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td colspan=\"2\"><input type=\"submit\" value=\"Save\" name=\"save\" /></td>\n");
-      out.write("                    </tr>\n");
-      out.write("                </tbody>\n");
-      out.write("            </table>\n");
-      out.write("        </form>\n");
-      out.write("\n");
-      out.write("        <table>\n");
-      out.write("            <tr>\n");
-      out.write("                <th>No.</th>\n");
-      out.write("                <th>Id</th>\n");
-      out.write("                <th>Name</th>\n");
-      out.write("                <th>Region</th>\n");
-      out.write("                <th>Aksi</th>\n");
-      out.write("            </tr>\n");
+      out.write("\r\n");
+      out.write("                            </select></td>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <td colspan=\"2\" align='center' ><input type=\"submit\" value=\"Save\" name=\"save\" /></td>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                </tbody>\r\n");
+      out.write("            </table>\r\n");
+      out.write("        </form>\r\n");
+      out.write("\r\n");
+      out.write("        <table cellspacing='30' align='center' border='1'>\r\n");
+      out.write("            <tr>\r\n");
+      out.write("                <th>No.</th>\r\n");
+      out.write("                <th>Id</th>\r\n");
+      out.write("                <th>Name</th>\r\n");
+      out.write("                <th>Region</th>\r\n");
+      out.write("                <th>Aksi</th>\r\n");
+      out.write("            </tr>\r\n");
       out.write("            ");
  int j = 1;
-                for (Country elem : (List<Country>) session.getAttribute("data")) { 
-      out.write("\n");
-      out.write("            <tr>\n");
+                for (Country elem : (List<Country>) session.getAttribute("data")) {
+      out.write("\r\n");
+      out.write("            <tr>\r\n");
       out.write("                <td>");
       out.print( j++);
-      out.write("</td>\n");
+      out.write("</td>\r\n");
       out.write("                <td>");
       out.print( elem.getId());
-      out.write("</td>\n");
+      out.write("</td>\r\n");
       out.write("                <td>");
       out.print( elem.getName());
-      out.write("</td>\n");
+      out.write("</td>\r\n");
       out.write("                <td>");
       out.print( elem.getRegion().getName());
-      out.write("</td>\n");
-      out.write("                <td>\n");
+      out.write("</td>\r\n");
+      out.write("                <td>\r\n");
       out.write("                    <a href=\"CountryServlet?action=update&id=");
       out.print( elem.getId());
-      out.write("\">Edit</a>\n");
+      out.write("\">Edit</a>\r\n");
       out.write("                    <a href=\"CountryServlet?action=delete&id=");
       out.print( elem.getId());
-      out.write("\">Hapus</a>\n");
-      out.write("                </td>\n");
-      out.write("            </tr>\n");
+      out.write("\">Hapus</a>\r\n");
+      out.write("                </td>\r\n");
+      out.write("            </tr>\r\n");
       out.write("            ");
 }
-      out.write("\n");
-      out.write("        </table>\n");
-      out.write("    </body>\n");
+      out.write("\r\n");
+      out.write("        </table>\r\n");
+      out.write("    </body>\r\n");
       out.write("    ");
  session.removeAttribute(
-                "CountryId"); 
-      out.write("\n");
+                "countryId"); 
+      out.write("\r\n");
       out.write("    ");
  session.removeAttribute(
-                "CountryName");
-      out.write("\n");
-      out.write("</html>\n");
+                "countryName");
+      out.write("\r\n");
+      out.write("    ");
+ session.removeAttribute(
+                "countryRegion");
+      out.write("\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

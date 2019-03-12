@@ -19,9 +19,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tampil data Region</title>
     </head>
-    <body>
-        <h1>Tampil Data</h1><form action="RegionServlet" method="POST">
-            <table border="1">
+     <body bgcolor='#F0FFFF'> 
+         <table align='center' size='+4'> 
+             <thead>
+                    <tr>
+                        <th colspan="2" >TAMPIL DATA REGION</th>
+                    </tr>
+                </thead> </table>
+        <form action="RegionServlet" method="POST">
+            <table cellspacing='50' align ='center' border="2">
                 <thead>
                     <tr>
                         <th colspan="2">Insert Region</th>
@@ -37,13 +43,13 @@
                         <td><input type="text" name="regionName" value="<% if(session.getAttribute("regionName")!=null) out.print(session.getAttribute("regionName"));   %>" /></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="Save" name="save" /></td>
+                        <td colspan="2" align='center'><input type="submit" value="Save" name="save" /></td>
                     </tr>
                 </tbody>
             </table>
         </form>
 
-        <table>
+        <table cellspacing='30' align ='center' border="1">
             <tr>
                 <th>No.</th>
                 <th>Id</th>
