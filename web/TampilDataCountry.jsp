@@ -40,12 +40,12 @@
                     <tr>
                         <td>Region</td>
                         <td><select name="countryRegion" >
-                                <% for (Region elem : (List<Region>) session.getAttribute("regiondata")) {
+                                <% if (session.getAttribute("data")!=null) { for (Region elem : (List<Region>) session.getAttribute("regiondata")) {
                                         out.print("<option "
                                                 + "value=\"" + elem.getId() + "\" "
                                                 + (elem.getId().equals(session.getAttribute("countryRegion")) ? "selected" : "") + ">"
                                                 + elem.getName() + "</option>");
-                                    }%>
+                                    }}else{response.sendRedirect("./CountryServlet");}%>
 
                             </select></td>
                     </tr>
@@ -65,6 +65,7 @@
                 <th>Aksi</th>
             </tr>
             <% int j = 1;
+            if (session.getAttribute("data")!=null) {
                 for (Country elem : (List<Country>) session.getAttribute(
                         "data")) {%>
             <tr>
@@ -77,7 +78,7 @@
                     <a href="CountryServlet?action=delete&id=<%= elem.getId()%>">Hapus</a>
                 </td>
             </tr>
-            <%}%>
+            <%}}else{response.sendRedirect("./CountryServlet");}%>
         </table>
     </body>
     <% session.removeAttribute(

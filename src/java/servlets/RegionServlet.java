@@ -68,10 +68,6 @@ public class RegionServlet extends HttpServlet {
         if (action != null) {
             if (action.equalsIgnoreCase("delete")) {
                 rc.delete(request.getParameter("id"));
-            } else if (action.equalsIgnoreCase("update")) {
-                Region region = rc.getById(request.getParameter("id"));
-                request.getSession().setAttribute("regionId", region.getId());
-                request.getSession().setAttribute("regionName", region.getName());
             }
         }
         processRequest(request, response);
